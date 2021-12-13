@@ -8,8 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!--CSS-->
-    <link href="/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
     <title>Cimart</title>
   </head>
@@ -52,46 +51,24 @@
 </div> -->
 
   <body>
-    <div class="imgbox"></div>
-      
-    </div>
-
-  <div class = "containers">
-    <h1>Best Seller</h1>
-<div class="row row-cols-1 row-cols-md-3" id="produkID">
-  <div class="col mb-4">
-    <div class="card">
-      <img src="produk.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <!-- right-side -->
+    <div class="col" id="col-1">
+      <h1>Masuk</h1>
+    <!-- login form -->
+    <form action="?p=login-action" method="Post">
+      <!-- Email address -->
+      <div class="form-group">
+          <label>Username</label>
+          <input type="text" class="form-control" placeholder="Username" name="username" required>
       </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="produk.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <!-- Password -->
+      <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" placeholder="Password" name="password" required>
       </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card">
-      <img src="produk.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-
-  </div>
-
-</div>
-  </div>
-
+      <button type="submit" class="btn btn-primary">Login</button>
+      <p><a href=" ">Lupa Kata Sandi?</a></p>
+      <p><a href=" ">Daftar?</a></p>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
