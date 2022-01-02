@@ -80,7 +80,7 @@ class OperationController extends Controller
         try {
             if ($check !== null) {
                 while ($index < count($data)) {
-                    $path = public_path($tname."/");
+                    $path = $tname."/";
                     $name = $requestKeys[(int)$index+1];
                     
                     $file = $data[$name]->getClientOriginalName();

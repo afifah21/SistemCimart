@@ -45,7 +45,7 @@
                             </a>
                         </li>
                     @endguest
-                    <li><a href="#"><img src="/webasset/img/cart.png"></a></li>
+                    <li><a href="keranjang"><img src="/webasset/img/cart.png"></a></li>
                 </ul>
             </div>
         </div>

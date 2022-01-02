@@ -8,6 +8,9 @@ use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OperationController;
+Use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\KeranjangController;
+Use App\Http\Controllers\PesananController;
 use App\Models\Menu;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -34,9 +37,16 @@ Route::get('/clear-view', function() {
 Route::get('home', function () {
     return redirect()->to('/');
 });
-Route::get('/', function () {
-    return view('webpage.home');
-});
+Route::get('/', [ProdukController::class, 'index']);
+
+
+Route::post('/products/{id}', [ProdukController::class, 'create']);
+
+Route::get('/products/{id}', [ProdukController::class, 'show']);
+
+Route::post('/keranjang/{id}', [KeranjangController::class, 'store']);
+Route::get('/keranjang', [KeranjangController::class, 'index']);
+
 
 Auth::routes();
 Route::get('register/success', [DashboardController::class,'register'])->name('register.success');
@@ -64,3 +74,4 @@ Route::group(['as'=>'aldev'],function(){
         Route::delete("$menu->url/{id}", [OperationController::class, 'destroy'])->name("$menu->url.destroy");
     }
 });
+
