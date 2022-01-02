@@ -28,4 +28,8 @@ class DashboardController extends Controller
         $dash_url = 'cafetaria';
         return view('dashboard.dashboard',compact(['menus','dash_url']));
     }
+
+    public function register(){
+        return view('auth.successreg');
+    }
 }

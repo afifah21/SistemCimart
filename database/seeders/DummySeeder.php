@@ -41,13 +41,8 @@ class DummySeeder extends Seeder
         DB::table('menu_roles')->insert([
             ['menus_id'=> 1, 'roles_id'=> 1],
             ['menus_id'=> 1, 'roles_id'=> 2],
-            ['menus_id'=> 1, 'roles_id'=> 3],
             ['menus_id'=> 2, 'roles_id'=> 1],
             ['menus_id'=> 2, 'roles_id'=> 2],
-            ['menus_id'=> 2, 'roles_id'=> 3],
-            ['menus_id'=> 3, 'roles_id'=> 1],
-            ['menus_id'=> 3, 'roles_id'=> 2],
-            ['menus_id'=> 3, 'roles_id'=> 3],
         ]);
 
         //Data Type Menu Forms
@@ -64,6 +59,8 @@ class DummySeeder extends Seeder
             ['input_value'=>'number','input_type'=> 'number'],
             ['input_value'=>'tiny','input_type'=> 'code editor'],
             ['input_value'=>'date','input_type'=> 'date'],
+            ['input_value'=>'file','input_type'=> 'file'],
+            ['input_value'=>'image','input_type'=> 'image'],
         ]);
     }
 }

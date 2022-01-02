@@ -23,10 +23,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/mkview', function() {
-    $exitCode = Artisan::call('make:view dashboard.crud.jadwal --extends=dashboard.layout.app --section="title_dashboard:Jadwal Create" --section=dashcontent');
-    return 'DONE Create View'; //Return anything
-});
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('config:cache');
     return 'DONE'; //Return anything
@@ -35,21 +31,21 @@ Route::get('/clear-view', function() {
     $exitCode = Artisan::call('view:cache');
     return 'DONE Clear View Cache'; //Return anything
 });
-
+Route::get('home', function () {
+    return redirect()->to('/');
+});
 Route::get('/', function () {
-    return view('welcome');
+    return view('webpage.home');
 });
 
 Auth::routes();
+Route::get('register/success', [DashboardController::class,'register'])->name('register.success');
 
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::get('/ceo', [DashboardController::class, 'admin'])->name('dashboard.admin');
+    Route::get('/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
 });
-Route::group(['middleware' => ['role:dosen']], function () {
-    Route::get('/ruangdosen', [DashboardController::class, 'dosen'])->name('dashboard.dosen');
-});
-Route::group(['middleware' => ['role:mahasiswa']], function () {
-    Route::get('/cafetaria', [DashboardController::class, 'mahasiswa'])->name('dashboard.mahasiswa');
+Route::group(['middleware' => ['role:user']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'dosen'])->name('dashboard.user');
 });
 
 Route::resource('database', DatabaseController::class);

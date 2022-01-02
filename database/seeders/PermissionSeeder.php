@@ -16,28 +16,18 @@ class PermissionSeeder extends Seeder
     {
         Permission::create(['name' => 'edit profile']);
 
-        //Penjadwalan
-        Permission::create(['name' => 'index jadwal']);
-        Permission::create(['name' => 'create jadwal']);
-        Permission::create(['name' => 'edit jadwal']);
-        Permission::create(['name' => 'delete jadwal']);
-        Permission::create(['name' => 'show jadwal']);
-        Permission::create(['name' => 'wait jadwal']);
-        Permission::create(['name' => 'approve jadwal']);
-        Permission::create(['name' => 'reject jadwal']);
+        //CRUD
+        Permission::create(['name' => 'index crud']);
+        Permission::create(['name' => 'create crud']);
+        Permission::create(['name' => 'edit crud']);
+        Permission::create(['name' => 'delete crud']);
+        Permission::create(['name' => 'show crud']);
 
-        //Mahasiswa
-        Permission::create(['name' => 'index mahasiswa']);
-        Permission::create(['name' => 'create mahasiswa']);
-        Permission::create(['name' => 'edit mahasiswa']);
-        Permission::create(['name' => 'delete mahasiswa']);
-        Permission::create(['name' => 'show mahasiswa']);
-
-        //Dosen
-        Permission::create(['name' => 'index dosen']);
-        Permission::create(['name' => 'create dosen']);
-        Permission::create(['name' => 'edit dosen']);
-        Permission::create(['name' => 'delete dosen']);
-        Permission::create(['name' => 'show dosen']);
+        //Table
+        Permission::create(['name' => 'index table']);
+        Permission::create(['name' => 'create table']);
+        Permission::create(['name' => 'edit table']);
+        Permission::create(['name' => 'delete table']);
+        Permission::create(['name' => 'show table']);
     }
 }

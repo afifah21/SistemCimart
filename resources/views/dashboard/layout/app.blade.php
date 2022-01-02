@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
     <link rel="stylesheet" href="/assets/vendors/iconly/bold.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <!-- Include Choices CSS -->
@@ -28,15 +27,12 @@
                 $dash_url = '';
                 switch ($auth) {
                     case 'admin':
-                        $dash_url = 'ceo';
+                        $dash_url = 'admin';
                         break;
-                    case 'dosen':
-                        $dash_url = 'ruangdosen';
+                    case 'user':
+                        $dash_url = 'dashboard';
                         break;
-                    case 'mahasiswa':
-                        $dash_url = 'cafetaria';
-                        break;
-                }
+                    }
             @endphp
             @include('dashboard.layout.sidebar',['menus'=>\App\Models\Menu::all(),'dash_url'=>$dash_url])
         </div>
@@ -47,7 +43,7 @@
                         <i class="bi bi-justify-left fs-3" style="width:auto;height:auto"></i>
                     </a>
                     <a href="{{ url('/') }}">
-                        <img src="/assets/images/logo/aldev-logo.svg" style="max-height: 50px" alt="">
+                        <img src="/webasset/img/logo2.png" style="max-height: 50px" alt="">
                     </a>
                 </div>
             </header>
@@ -60,11 +56,11 @@
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
-                        <p>2021 &copy; Hialdev</p>
+                        <p>2021 &copy; Cimart</p>
                     </div>
                     <div class="float-end">
                         <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                                href="http://hialdev.com">Hialdev</a></p>
+                                href="http://hialdev.com">hialdev</a></p>
                     </div>
                 </div>
             </footer>
@@ -81,6 +77,10 @@
     <script src="/assets/vendors/tinymce/tinymce.min.js"></script>
     <script src="/assets/vendors/tinymce/plugins/code/plugin.min.js"></script>
     <script src="/assets/js/main.js"></script>
+
+    <script>
+        tinymce.init({ selector: '#dark', toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent code', plugins: 'code' });
+    </script>
 </body>
 
 </html>

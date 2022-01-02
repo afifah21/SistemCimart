@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Crud;
 use App\Models\Menu;
 use App\Models\MenuForm;
 use App\Models\Table;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 class OperationController extends Controller
@@ -49,24 +52,62 @@ class OperationController extends Controller
      */
     public function store(Request $request)
     {
-        $table = Table::where('table','=',Str::lower(Str::plural($this->route_now)))->first();
+        $tname = Str::lower(Str::plural($this->route_now));
+        $table = Table::where('table','=',$tname)->first();
         $model = '\App\Models\\'.$table->model;
-        $data = $request->all();
+        $data = $request->except('_token');
+        $crud = Crud::where('table_name',$tname)->get();
+        $requestKeys = collect($request->all())->keys();
+        $valid = [];
+        $check = [];
+        $final = [];
+        for ($i=0; $i < count($requestKeys)-1; $i++) { 
+            if ($crud[$i]->input_type == 'image') {
+                $check[] = [
+                    'index' => $i,
+                    'type' => 'image',
+                ];
+            }elseif ($crud[$i]->input_type == 'file') {
+                $check[] = [
+                    'index' => $i,
+                    'type' => 'file',
+                ];
+            };
+        }
+
+        $index = count($data) - count($check);
 
         try {
-            $model::create($data);
+            if ($check !== null) {
+                while ($index < count($data)) {
+                    $path = public_path($tname."/");
+                    $name = $requestKeys[(int)$index+1];
+                    
+                    $file = $data[$name]->getClientOriginalName();
+                    $upload[] = [$file];
+                    $data[$name]->move($path,$file);
+        
+                    unset($data[$name]);
+                    $data = Arr::add($data,$name,$path.$file);
+                    $index++;
+                }
+            }else{
+                $data = $data;
+            }
             
+            $model::create($data);
+
             return redirect()
                     ->route("aldev$this->route_now.index")
                     ->with([
                         'success' => 'Hore, Data berhasil ditambah!'
                     ]);
-        } catch (\Throwable $th) {
+        } catch (Exception $e) {
             return redirect()
                     ->back()
                     ->withInput()
                     ->with([
-                        'error' => 'Error, Data gagal ditambah \n'. $th,
+                        'error' => 'Error, Data gagal ditambah \r\n'. $e->getMessage(),
                     ]);
         }
         
