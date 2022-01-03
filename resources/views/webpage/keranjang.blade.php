@@ -3,13 +3,15 @@
 <div class="containerKeranjang">
           <h1>Keranjang Belanja</h1>
 
-      @foreach ($keranjang as $data)
+      @if ($keranjangs != NULL)
+          @foreach ($keranjangs as $data)
+          @if($data->product->image != NULL)
           <div class="produkContainer">
             <div class="imageProduk">
-                <img src="" width="200px" height="200px">
+              <img src=" {{URL::to('/')}}/products/{{ $data->product->image }}" width="200px" height="200px"> 
             </div>
             <div class="detailProdukKeranjang">
-                <h4>{{$data->id}}</h4>
+                <h4>{{$data->product->title}}</h4>
                 <div class="varian">
                   <div>Kuantitas : </div>
                   <div>
@@ -18,7 +20,9 @@
                 </div>
             </div>
           </div>
+          @endif
       @endforeach
+      @endif
 
       </div>
 

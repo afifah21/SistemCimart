@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 use App\Models\Keranjang;
 use App\Models\Pesanan;
 use App\Models\Product;
@@ -12,6 +13,9 @@ use Redirect;
 
 class KeranjangController extends Controller
 {
+    
+    protected $table = 'keranjangs';
+
     public function __construct(){
         $this->Keranjang = new Keranjang();
         $this->Pesanan = new Pesanan();
@@ -19,8 +23,13 @@ class KeranjangController extends Controller
     }
 
     public function index(){
-    	$data = ['keranjang' => $this->Keranjang->allData()];
-        return view('webpage.keranjang', $data);
+        
+        $keranjangs = Keranjang::all();
+        $idUser = Auth::id();
+        $data = ['keranjang' => $this->Keranjang->getUserKeranjang($idUser)];
+        return view('webpage.keranjang',compact('keranjangs'));
+    	
+        // return view('webpage.keranjang', $data);
     }
 
     public function showOneData($id){
@@ -52,6 +61,7 @@ class KeranjangController extends Controller
             $datetime = date_create()->format('Y-m-d H:i:s');
         
                     $data =[
+                        'id_pesanan' => 1,
                         'id_product' => $idProduct,
                         'name'=> Auth::user()->name,
                         'id_user' => Auth::id(),

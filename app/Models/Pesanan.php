@@ -10,7 +10,7 @@ class Pesanan extends Model
 {
     use HasFactory;
 
-    protected $table = 'pesanan';
+    protected $table = 'pesanans';
 
 
 	public function user()
@@ -44,5 +44,10 @@ class Pesanan extends Model
     public function getOneValue($id)
     {
         return DB::table('pesanans')->where('id', $id)->first();
+    }
+
+    public function updateData($data, $id)
+    {
+        DB::table('pesanans')->where('id',$id)->update($data);
     }
 }

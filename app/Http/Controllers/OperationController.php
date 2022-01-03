@@ -88,7 +88,7 @@ class OperationController extends Controller
                     $data[$name]->move($path,$file);
         
                     unset($data[$name]);
-                    $data = Arr::add($data,$name,$path.$file);
+                    $data = Arr::add($data,$name,$file);
                     $index++;
                 }
             }else{

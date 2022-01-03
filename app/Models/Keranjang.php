@@ -10,7 +10,7 @@ class Keranjang extends Model
 {
     use HasFactory;
 
-    protected $table = 'pesanan';
+    protected $table = 'keranjangs';
 
 
 	public function user()
@@ -36,4 +36,11 @@ class Keranjang extends Model
     {
         return DB::table('keranjangs')->where('id', $id)->first();
     }
+
+    public function getUserKeranjang($id)
+    {
+        return DB::table('keranjangs')->where('id_user', $id)->first();
+    }
+
+    
 }

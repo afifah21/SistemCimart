@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
 
     <link rel="stylesheet" type="text/css" href="/webasset/css/style.css">
-    <link rel="shortcut icon" href="/webasset/img/cimart logo.png" type="image/x-icon" height="50px" width="50px">
+    <link rel="shortcut icon" href="/webasset/img/cimartKecil.png" type="image/x-icon" height="50px" width="50px">
     <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
     <title>Cimart</title>
 </head>
@@ -21,7 +21,7 @@
     <div class="wrapper">
         <div class="top_nav">
             <div class="left">
-                <img class = "logo" src="/webasset/img/cimartKecil.png">
+                <img class ="logo" src="/webasset/img/cimart kecil.png" href="/home">
             </div> 
             <div class="right">
                 <ul>
@@ -44,7 +44,8 @@
                             <h5 class="m-0 p-0">Hi, {{ Auth::user()->name }}</h5>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <a href="{{ route('dashboard.user') }}"> <button href="" class="dropdown-item" type="button">Edit Profile</button> </a>
+                            
+                        <a href="{{ route(( Auth::user()->name=='Administrator')?'dashboard.admin':'dashboard.user') }}"> <button href="" class="dropdown-item" type="button">Edit Profile</button> </a>
                             <button href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item" type="button">Logout</button>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -63,7 +64,7 @@
         </div>
         <div class="bottom_nav">
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="/home">Home</a></li>
                 <li><a href="#">Fashion</a></li>
                 <li><a href="#">Makanan</a></li>
                 <li><a href="#">Fresh Food</a></li>

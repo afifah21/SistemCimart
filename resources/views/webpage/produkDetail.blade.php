@@ -2,7 +2,7 @@
 @section('content')
 <div class = "detailContainer">
           <div class="produkImage">
-                  <img src="/products/{{$products->image}}" width="400" height="400" class="produkGambar">
+                  <img src="{{$products->image}}" width="400" height="400" class="produkGambar">
           </div>
 
           <div class="detailProduk">

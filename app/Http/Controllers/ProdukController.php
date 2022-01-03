@@ -9,6 +9,8 @@ use App\Models\Product;
 class ProdukController extends Controller
 {
 
+    protected $table = 'products';
+
     public function __construct(){
         $this->Product = new Product();
     }
