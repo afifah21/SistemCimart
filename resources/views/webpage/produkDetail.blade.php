@@ -7,11 +7,11 @@
 
           <div class="detailProduk">
               <h1>{{$products->title}}</h1>
-              <h3>{{$products->harga}}</h3>
+              <h3>Rp.{{$products->harga}}</h3>
 
               <form action="{{ url('keranjang/'.$products->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
-              <div class="varian">
+              <!-- <div class="varian">
                   <div>Varian&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                   <div>
                       <div class="dropdown">
@@ -25,7 +25,7 @@
                           </div>
                       </div>
                   </div>
-              </div>
+              </div> -->
               
 
               <div class="kuantitas">
@@ -36,8 +36,8 @@
               </div>
 
               <div class="longButton">
-                  <button type="submit" class="buttonAddTroli">Tambah Ke Troli</button> 
-                  <button type="button" class="buttonBeliSegera">Beli Segera</button>
+                  <button type="submit" class="buttonAddTroli" name="action" value="buttonAddTroli">Tambah Ke Troli</button> 
+                  <button type="submit" class="buttonBeliSegera" name="action" value="buttonBeliSegera">Beli Segera</button>
               </div>
           </form>
 

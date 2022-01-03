@@ -33,16 +33,12 @@ class ProdukController extends Controller
                 'tahun_masuk'=> Request()->thnmasuk,
                 'update_at' => $datetime,
             ];
-
-
-            $this->Mahasiswa->updateData($data,$id); 
-            return redirect('mahasiswa');
-            }
-            //---
+        }
         else{
 
            $data = ['products' => $this->Product->getOneValue($id)];
                 return view('webpage.produkDetail', $data);
             }
+    
     }
 }

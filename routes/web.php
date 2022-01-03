@@ -47,6 +47,8 @@ Route::get('/products/{id}', [ProdukController::class, 'show']);
 Route::post('/keranjang/{id}', [KeranjangController::class, 'store']);
 Route::get('/keranjang', [KeranjangController::class, 'index']);
 
+Route::get('/pesanan/{id}', [PesananController::class, 'show']);
+
 
 Auth::routes();
 Route::get('register/success', [DashboardController::class,'register'])->name('register.success');

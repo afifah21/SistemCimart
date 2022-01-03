@@ -14,6 +14,18 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
 
+    protected $table = 'users';
+
+        public function pesanans()
+    {
+        return $this->hasMany('App\User');
+    }
+
+    public function keranjangs()
+    {
+        return $this->hasMany('App\Keranjang');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

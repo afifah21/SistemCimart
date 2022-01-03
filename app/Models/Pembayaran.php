@@ -9,4 +9,11 @@ class Pembayaran extends Model
 {
     use HasFactory;
     protected $guarded =[];
+
+    protected $table = 'pembayarans';
+
+        public function pesanans()
+    {
+        return $this->hasMany('App\Pembayaran');
+    }
 }

@@ -11,6 +11,18 @@ class Product extends Model
     use HasFactory;
     protected $guarded = [];
 
+    protected $table = 'products';
+
+        public function pesanans()
+    {
+        return $this->hasMany('App\Pesanan');
+    }
+
+    public function keranjangs()
+    {
+        return $this->hasMany('App\Keranjang');
+    }
+
     public function getTopTenProduct()
     {
         return DB::table('products')->get();

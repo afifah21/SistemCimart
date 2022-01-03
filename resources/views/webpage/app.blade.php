@@ -21,7 +21,7 @@
     <div class="wrapper">
         <div class="top_nav">
             <div class="left">
-                <img class = "logo" src="/webasset/img/cimart logo.png">
+                <img class = "logo" src="/webasset/img/cimartKecil.png">
             </div> 
             <div class="right">
                 <ul>
@@ -39,11 +39,23 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-orange dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <h5 class="m-0 p-0">Hi, {{ Auth::user()->name }}</h5>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <a href="{{ route('dashboard.user') }}"> <button href="" class="dropdown-item" type="button">Edit Profile</button> </a>
+                            <button href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item" type="button">Logout</button>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+                        <!-- <li class="nav-item dropdown">
                             <a href="{{ route('dashboard.user') }}">
                                 <h5 class="m-0 p-0">Hi, {{ Auth::user()->name }}</h5>
                             </a>
-                        </li>
+                        </li> -->
                     @endguest
                     <li><a href="keranjang"><img src="/webasset/img/cart.png"></a></li>
                 </ul>
