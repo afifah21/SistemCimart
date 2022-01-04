@@ -6,7 +6,7 @@
         <form action="{{ url('pesanan/'.$pesanans->id)}}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="varian">
-                <div h2> Data Pembeli </div h2>
+                <div> Data Pembeli </div>
               </div>
             <div class="checkout">
                 <div>No. Telp : </div>

@@ -1,7 +1,17 @@
 @extends('webpage.app')
 @section('content')
+<div class="jumbotron jumbotron-fluid cimartBanner">
+  <div class="container">
+    <div class="logo"><img src="/webasset/img/logo2.png" width="300px" height="300px"></div>
+    <div class="jumboText">
+      <h1>Apa itu Cimart?</h1>
+      <p>Lorem Ipsum Sig Dolor Amet</p>
+
+    </div>
+  </div>
+</div>
 <div class = "containers">
-    <h1>Just Arrived!</h1>
+    <h1>All products</h1>
     <div class="row row-cols-1 row-cols-md-3" id="produkID">
         
     @foreach ($products as $data)

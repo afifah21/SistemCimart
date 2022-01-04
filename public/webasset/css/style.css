@@ -578,3 +578,20 @@
 a:link {
   text-decoration: none!important;
 }
+
+.jumboText
+{
+  margin-left: 20px;
+  display: inline-block;
+  color: white;
+}
+
+.cimartBanner {
+  background-image: url("/webasset/img/bannerCimart.png");
+  background-size: cover;
+}
+
+.logo {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: inline-block;}
