@@ -15,10 +15,31 @@
     <div class="sidebar-menu">
         <ul class="menu">
 
+            
+            @role ('admin')
             <li class="sidebar-item {{ request()->is($dash_url) ? 'active' : '' }}">
                 <a href="{{ url($dash_url) }}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-item {{ request()->is('transaksi*') ? 'active' : '' }}">
+                <a href="{{ url('transaksi') }}" class='sidebar-link'>
+                    <i class="bi bi-clipboard"></i>
+                    <span>Transaksi</span>
+                </a>
+            </li>
+            <li class="sidebar-item {{ request()->is('pembeli*') ? 'active' : '' }}">
+                <a href="{{ url('pembeli') }}" class='sidebar-link'>
+                    <i class="bi bi-file-person"></i>
+                    <span>Pembeli</span>
+                </a>
+            </li>
+            @endrole
+            <li class="sidebar-item {{ request()->is('profile*') ? 'active' : '' }}">
+                <a href="{{ url('profile') }}" class='sidebar-link'>
+                    <i class="bi bi-person-circle"></i>
+                    <span>Profile</span>
                 </a>
             </li>
             @foreach ($menus as $menu)

@@ -9,7 +9,7 @@
 		<h1>Pesanan Anda Sedang Diproses</h1>
 		<p class ="center-text">Silahkan kontak admin untuk selengkapnya</p>
         <p class="kontak-wa"><a href="https://api.whatsapp.com/send/?phone=6281380366824&text&app_absent=0">Kontak Saya!</a></p>
-		<button href="(/home)" type="button" class="btn-home">Pergi ke Home</button>
+		<a href="{{ url('/') }}" class="d-inline-block btn-home text-white">Pergi ke Home</a>
 	</div>
 
 </body>

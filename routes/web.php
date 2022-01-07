@@ -10,7 +10,10 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OperationController;
 Use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\PembeliController;
 Use App\Http\Controllers\PesananController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransaksiController;
 use App\Models\Menu;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -39,29 +42,6 @@ Route::get('home', function () {
 });
 Route::get('/', [ProdukController::class, 'index']);
 
-
-Route::post('/products/{id}', [ProdukController::class, 'create']);
-
-Route::get('/products/{id}', [ProdukController::class, 'show']);
-
-Route::post('/keranjang/{id}', [KeranjangController::class, 'store']);
-Route::get('/keranjang', [KeranjangController::class, 'index']);
-
-Route::post('/pesanan/{id}', [PesananController::class, 'show']);
-Route::get('/pesanan/{id}', [PesananController::class, 'show']);
-
-
-
-Auth::routes();
-Route::get('register/success', [DashboardController::class,'register'])->name('register.success');
-
-Route::group(['middleware' => ['role:admin']], function () {
-    Route::get('/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
-});
-Route::group(['middleware' => ['role:user']], function () {
-    Route::get('/dashboard', [DashboardController::class, 'dosen'])->name('dashboard.user');
-});
-
 Route::resource('database', DatabaseController::class);
 Route::resource('menu', MenuController::class);
 Route::resource('crud', CrudController::class);
@@ -79,3 +59,33 @@ Route::group(['as'=>'aldev'],function(){
     }
 });
 
+Route::post('/products/{id}', [ProdukController::class, 'create']);
+
+Route::get('/products/{id}', [ProdukController::class, 'show']);
+
+Route::post('/keranjang/{id}', [KeranjangController::class, 'store']);
+Route::get('/keranjang', [KeranjangController::class, 'index']);
+
+Route::post('/pesanan/{id}', [PesananController::class, 'show']);
+Route::get('/pesanan/{id}', [PesananController::class, 'show']);
+
+Auth::routes();
+Route::get('register/success', [DashboardController::class,'register'])->name('register.success');
+Route::group(['middleware' => ['role:admin|user']], function(){
+    Route::get('profile',[ProfileController::class,'index'])->name('profile.index');
+    Route::get('profile/{id}/edit',[ProfileController::class,'edit'])->name('profile.edit');
+    Route::put('profile/{id}/update',[ProfileController::class,'update'])->name('profile.update');
+    Route::get('profile/{id}/change',[ProfileController::class,'change'])->name('profile.change');
+    Route::put('profile/{id}/changed',[ProfileController::class,'changed'])->name('profile.changed');
+
+});
+
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
+    Route::resource('transaksi',TransaksiController::class);
+    Route::get('/pembeli',[PembeliController::class,'index'])->name('pembeli.index');
+    Route::get('/pembeli/{id}/pesanan',[PembeliController::class,'show'])->name('pembeli.show');
+});
+Route::group(['middleware' => ['role:user']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'dosen'])->name('dashboard.user');
+});

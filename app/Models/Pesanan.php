@@ -23,7 +23,7 @@ class Pesanan extends Model
     }
     public function ekspedisi()
     {
-        return $this->belongsTo(Ekspedisi::class, 'id_ekspedisi', 'id');
+        return $this->belongsTo(Expedisi::class, 'id_ekspedisi', 'id');
     }
 	public function pembayaran()
     {

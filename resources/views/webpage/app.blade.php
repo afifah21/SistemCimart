@@ -45,7 +45,7 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             
-                        <a href="{{ route(( Auth::user()->name=='Administrator')?'dashboard.admin':'dashboard.user') }}"> <button href="" class="dropdown-item" type="button">Edit Profile</button> </a>
+                        <a href="{{ route((Auth::user()->hasRole('admin'))?'dashboard.admin':'profile.index') }}"> <button href="" class="dropdown-item" type="button">{{ ( Auth::user()->hasRole('admin'))?'Dashboard':'Profile' }}</button> </a>
                             <button href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item" type="button">Logout</button>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
